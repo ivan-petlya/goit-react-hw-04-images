@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Notiflix from 'notiflix';
-import PropTypes from 'prop-types';
 import css from './Searchbar.module.css';
 
 class Searchbar extends Component {
