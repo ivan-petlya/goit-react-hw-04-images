@@ -1,4 +1,4 @@
-import fetchPictures from './Api/Api';
+import fetchPictures from '../services/PixabayApi/Api';
 import React, { Component } from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import ImagesGallery from './ImageGallery/ImageGallery';

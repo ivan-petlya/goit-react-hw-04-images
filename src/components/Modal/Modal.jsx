@@ -2,8 +2,6 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
-// const appRoot = document.getElementById('app-root');
-// const modalRoot = document.getElementById('modal-root');
 const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
