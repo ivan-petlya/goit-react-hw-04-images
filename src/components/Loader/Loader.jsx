@@ -1,10 +1,10 @@
 import React from 'react';
-import css from './Loader.module.css';
+// import css from './Loader.module.css';
 import { RotatingLines } from 'react-loader-spinner';
-
-export const Loader = () => {
+import { StyledLoader } from './LoaderStyles';
+const Loader = () => {
   return (
-    <section className={css.Loader}>
+    <StyledLoader>
       <RotatingLines
         strokeColor="grey"
         strokeWidth="5"
@@ -12,7 +12,7 @@ export const Loader = () => {
         width="84"
         visible={true}
       />
-    </section>
+    </StyledLoader>
   );
 };
 export default Loader;

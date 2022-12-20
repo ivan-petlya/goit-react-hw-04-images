@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import css from './Button.module.css';
+import { StyledButton } from './ButtonStyles';
+// import css from './Button.module.css';
 
 const Button = ({ onClick }) => {
   return (
-    <button onClick={() => onClick()} type="button" className={css.Button}>
+    <StyledButton onClick={onClick} type="button">
       Load more
-    </button>
+    </StyledButton>
   );
 };
 

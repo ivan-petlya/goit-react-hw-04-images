@@ -1,47 +1,45 @@
-import React, { Component } from 'react';
-import Notiflix from 'notiflix';
-import css from './Searchbar.module.css';
+import PropTypes from 'prop-types';
+import { Notify } from 'notiflix';
+// import css from './Searchbar.module.css';
+import { StyledSearchbar } from './SearchbarStyles';
+import { useState } from 'react';
 
-class Searchbar extends Component {
-  state = {
-    query: '',
-  };
-  handleImageChange = event => {
-    this.setState({ query: event.currentTarget.value.toLowerCase() });
-  };
-  handleSubmit = event => {
-    event.preventDefault();
+export default function Searchbar({ onSubmit }) {
+  const [query, setQuery] = useState('');
 
-    if (this.state.query.trim() === '') {
-      //   return alert('Please, enter image name.');
-      Notiflix.Notify.warning('please enter your request');
+  const handleQueryChange = evt => setQuery(evt.target.value.toLowerCase());
+
+  const handleSearchSubmit = evt => {
+    evt.preventDefault();
+    if (query.trim() === '') {
+      return Notify.info('Sorry, Please enter a more specific query');
     }
-
-    this.props.onSubmit(this.state.query);
-    this.setState({ query: '' });
+    onSubmit(query);
+    setQuery('');
   };
-  render() {
-    return (
-      <header className={css.Searchbar}>
-        <form className={css.SearchForm} onSubmit={this.handleSubmit}>
-          <button type="submit" className={css.SearchForm__button}>
-            <span className={css.buttonLabel}>🔍</span>
-          </button>
 
-          <input
-            name="image"
-            className={css.SearchForm__input}
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-            value={this.state.query}
-            onChange={this.handleImageChange}
-          />
-        </form>
-      </header>
-    );
-  }
+  return (
+    <StyledSearchbar>
+      <form onSubmit={handleSearchSubmit} className="searchForm">
+        <button type="submit" className="searchForm-button">
+          <span>🔍</span>
+        </button>
+
+        <input
+          className="searchForm-input"
+          type="text"
+          name="search"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+          value={query}
+          onChange={handleQueryChange}
+        />
+      </form>
+    </StyledSearchbar>
+  );
 }
 
-export default Searchbar;
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func,
+};
