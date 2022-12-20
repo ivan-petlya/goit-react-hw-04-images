@@ -36,7 +36,7 @@ export default function ImageGallery({ query }) {
       Notify.info('Your query could not find anything');
       setTotalHits('');
     }
-  }, [query]);
+  }, [query, totalHits]);
 
   useEffect(() => {
     if (page === 1) {
@@ -50,7 +50,7 @@ export default function ImageGallery({ query }) {
       })
       .catch(error => console.log('Something went wrong'))
       .finally(() => setLoading(false));
-  }, [page]);
+  }, [imgStorage, page, query]);
 
   const handleLoadMore = evt => {
     evt.preventDefault();
