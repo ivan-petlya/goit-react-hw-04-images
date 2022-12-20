@@ -49,7 +49,7 @@ export default function ImageGallery({ query }) {
       })
       .catch(error => console.log('Something went wrong'))
       .finally(() => setLoading(false));
-  }, [imgStorage, page, query]);
+  }, [page]);
 
   const handleLoadMore = evt => {
     evt.preventDefault();
