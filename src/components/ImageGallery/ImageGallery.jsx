@@ -35,7 +35,7 @@ export default function ImageGallery({ query }) {
       Notify.info('Your query could not find anything');
       setTotalHits('');
     }
-  }, [query]);
+  }, [query, totalHits]);
 
   useEffect(() => {
     if (page === 1) {
