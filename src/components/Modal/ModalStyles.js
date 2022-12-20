@@ -41,25 +41,4 @@ export const StyledModal = styled.div`
   .modalBtn:hover .btnIcon {
     fill: rgba(255, 255, 255, 0.3);
   }
-  .Overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-  .ModalWindow {
-    max-width: calc(100vw - 48px);
-    max-height: calc(100vh - 24px);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 70%;
-  }
 `;

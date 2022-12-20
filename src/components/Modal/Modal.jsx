@@ -1,12 +1,11 @@
-import { createPortal } from 'react-dom';
-// import css from './Modal.module.css';
+import PropTypes from 'prop-types';
 import { StyledModal } from './ModalStyles';
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ index, gallery, onClose }) => {
+export default function Modal({ index, gallery, onClose }) {
   const [imageIndex, setImageIndex] = useState(index);
   const { tags, largeImageURL } = gallery[imageIndex];
 
@@ -22,6 +21,7 @@ const Modal = ({ index, gallery, onClose }) => {
       onClose();
     }
   };
+
   const nextPage = () =>
     setImageIndex(imageIndex === gallery.length - 1 ? 0 : imageIndex + 1);
 
@@ -41,22 +41,26 @@ const Modal = ({ index, gallery, onClose }) => {
   };
 
   return createPortal(
-    <StyledModal onClick={handleBackdropClose} className="Overlay">
-      <div className="Modal">
+    <StyledModal onClick={handleBackdropClose}>
+      <div className="modal">
         <img src={largeImageURL} alt={tags} />
         <div className="modalBtnsWrap">
-          <button className="modalBtn" type="button" onClick={prevPage}>
-            {/* ⮨ */}
-          </button>
-          <button className="modalBtn" type="button" onClick={nextPage}>
-            {/* ⮩ */}
-          </button>
+          <button
+            className="modalBtn"
+            type="button"
+            onClick={prevPage}
+          ></button>
+          <button
+            className="modalBtn"
+            type="button"
+            onClick={nextPage}
+          ></button>
         </div>
       </div>
     </StyledModal>,
     modalRoot
   );
-};
+}
 
 Modal.propTypes = {
   gallery: PropTypes.arrayOf(
@@ -68,4 +72,3 @@ Modal.propTypes = {
   index: PropTypes.number.isRequired,
   onClose: PropTypes.func.isRequired,
 };
-export default Modal;

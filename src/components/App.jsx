@@ -1,13 +1,9 @@
-// import fetchPictures from '../services/PixabayApi/Api';
 import { useState } from 'react';
-import Searchbar from './Searchbar/Searchbar';
+import './App.css';
 import ImageGallery from './ImageGallery/ImageGallery';
-// import Loader from './Loader/Loader';
-// import Button from './Button/Button';
-// import Modal from './Modal/Modal';
-// import Notiflix from 'notiflix';
+import Searchbar from './Searchbar/Searchbar';
 
-export function App() {
+export default function App() {
   const [query, setQuery] = useState('');
   return (
     <>

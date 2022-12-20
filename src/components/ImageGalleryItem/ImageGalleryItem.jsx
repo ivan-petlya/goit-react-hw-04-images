@@ -1,22 +1,21 @@
-import React from 'react';
-import { StyledImageGalleryItem } from './ImageGalleryItemStyles';
-// import css from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
+import { StyledImageGalleryItem } from './ImageGalleryItemStyles';
 
 export default function ImageGalleryItem({ item, openModal }) {
+
   const { webformatURL, id, tags } = item;
 
   return (
     <StyledImageGalleryItem>
       <img
+        className="imageGalleryItem-image"
         src={webformatURL}
         alt={tags}
-        className="ImageGalleryItem-image"
         onClick={() => openModal(id)}
       />
     </StyledImageGalleryItem>
   );
-}
+};
 
 ImageGalleryItem.propTypes = {
   item: PropTypes.shape({

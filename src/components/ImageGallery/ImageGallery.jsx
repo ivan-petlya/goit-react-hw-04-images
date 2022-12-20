@@ -1,14 +1,13 @@
-import React from 'react';
-// import css from './ImageGallery.module.css';
-import { StyledImageGallery } from './ImageGalleryStyles';
-import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
-import { useEffect, useState } from 'react';
-import fetchPictures from 'services/PixabayApi/Api';
-import { Notify } from 'notiflix';
-import Loader from 'components/Loader/Loader';
-import Modal from 'components/Modal/Modal';
-import Button from 'components/Button/Button';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { Notify } from 'notiflix';
+import { StyledImageGallery } from './ImageGalleryStyles';
+import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import Modal from 'components/Modal/Modal';
+import Loader from 'components/Loader/Loader';
+import Button from 'components/Button/Button';
+
+import fetchPictures from 'services/PixabayApi/Api';
 
 export default function ImageGallery({ query }) {
   const [imgStorage, setImgStorage] = useState([]);
@@ -36,7 +35,7 @@ export default function ImageGallery({ query }) {
       Notify.info('Your query could not find anything');
       setTotalHits('');
     }
-  }, [query, totalHits]);
+  }, [query]);
 
   useEffect(() => {
     if (page === 1) {
@@ -50,7 +49,7 @@ export default function ImageGallery({ query }) {
       })
       .catch(error => console.log('Something went wrong'))
       .finally(() => setLoading(false));
-  }, [imgStorage, page, query]);
+  }, [page]);
 
   const handleLoadMore = evt => {
     evt.preventDefault();
